@@ -1,0 +1,21 @@
+{
+  "heroImages": [
+    "hero-workshop.png",
+    "mechanic-hero.png",
+    "diagnostic-screen.png"
+  ],
+  "serviceImages": [
+    "https://kimi-web-img.moonshot.cn/img/avtoobninsk.ru/457a8a10247e0d09820add2a2dc1808c6e797b4c.png",
+    "https://kimi-web-img.moonshot.cn/img/sun6-21.userapi.com/52f670e9376c32ee3057701b7a69171b79a696ae.jpg",
+    "https://kimi-web-img.moonshot.cn/img/dtdieselservis.com.ua/5730734c4455482d7ef8d88705ade0650b0211ff.jpg",
+    "https://kimi-web-img.moonshot.cn/img/dobrymehanik.by/6445f6b85fac8ba49665e4163ce73cecf2a468e9.webp",
+    "https://kimi-web-img.moonshot.cn/img/novate.ru/d59cd49a99ba2448f12db868932d0f2deefcb82f.jpg"
+  ],
+  "galleryImages": [
+    "https://kimi-web-img.moonshot.cn/img/podborkaauto.ru/c1f19c4a240f7f2fdefb333452bb6d9c54107cad.jpg",
+    "https://kimi-web-img.moonshot.cn/img/avatars.mds.yandex.net/3a86b5b82c962b76cfcb80c8eb2f105794720f7e",
+    "https://kimi-web-img.moonshot.cn/img/images.prom.ua/bd0e2dd62dd40f779eac4883c5580511c5b2eaea.jpg",
+    "https://kimi-web-img.moonshot.cn/img/www.kingtony.com/c4d61bc9845a1b3a943bcc3903e4d8a43867195a.jpg",
+    "https://kimi-web-img.moonshot.cn/img/avtovesti.com/76e6d7f0d0c5cc72be8118dfd1a5a6dbe31dd744.jpg"
+  ]
+}

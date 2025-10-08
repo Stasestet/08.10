@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - Ключ на 17</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #ffffff;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .service-detail-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+        }
+        
+        .price-table {
+            background: linear-gradient(135deg, #1a1a1a 0%, #374151 100%);
+            border: 2px solid #ff6b35;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-tools text-2xl text-gradient"></i>
+                <span class="text-2xl font-bold text-gradient">Ключ на 17</span>
+            </div>
+            <div class="hidden md:flex space-x-8 desktop-nav">
+                <a href="index.html" class="text-white hover:text-gradient transition-colors">Главная</a>
+                <a href="services.html" class="text-gradient font-semibold">Услуги</a>
+                <a href="gallery.html" class="text-white hover:text-gradient transition-colors">Галерея</a>
+                <a href="contact.html" class="text-white hover:text-gradient transition-colors">Контакты</a>
+            </div>
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold">
+                Записаться
+            </button>
+            <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gradient mb-6">Наши услуги</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Полный спектр профессиональных автомобильных услуг. От диагностики до капитального ремонта.
+            </p>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- Diagnostic Services -->
+                <div class="service-detail-card rounded-2xl p-8">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-search text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-6">Диагностика</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Компьютерная диагностика</span>
+                            <span class="text-gradient font-bold">500 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Диагностика двигателя</span>
+                            <span class="text-gradient font-bold">800 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Диагностика подвески</span>
+                            <span class="text-gradient font-bold">600 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Диагностика АКПП</span>
+                            <span class="text-gradient font-bold">1200 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Диагностика кондиционера</span>
+                            <span class="text-gradient font-bold">1000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span>Проверка перед покупкой</span>
+                            <span class="text-gradient font-bold">2500 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6">
+                        Записаться на диагностику
+                    </button>
+                </div>
+
+                <!-- Maintenance Services -->
+                <div class="service-detail-card rounded-2xl p-8">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-oil-can text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-6">Техническое обслуживание</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Замена масла в двигателе</span>
+                            <span class="text-gradient font-bold">750 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Замена масла в АКПП</span>
+                            <span class="text-gradient font-bold">2500 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Замена фильтров</span>
+                            <span class="text-gradient font-bold">от 200 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Замена свечей</span>
+                            <span class="text-gradient font-bold">от 400 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Замена тормозной жидкости</span>
+                            <span class="text-gradient font-bold">1000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span>Заправка кондиционера</span>
+                            <span class="text-gradient font-bold">2000 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6">
+                        Записаться на ТО
+                    </button>
+                </div>
+
+                <!-- Repair Services -->
+                <div class="service-detail-card rounded-2xl p-8">
+                    <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cogs text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-6">Ремонт</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Ремонт тормозов</span>
+                            <span class="text-gradient font-bold">от 600 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Ремонт подвески</span>
+                            <span class="text-gradient font-bold">от 700 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Ремонт двигателя</span>
+                            <span class="text-gradient font-bold">от 20000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Ремонт АКПП</span>
+                            <span class="text-gradient font-bold">от 15000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                            <span>Ремонт кондиционера</span>
+                            <span class="text-gradient font-bold">от 1500 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span>Развал-схождение 3D</span>
+                            <span class="text-gradient font-bold">1200 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6">
+                        Записаться на ремонт
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Price Table -->
+    <section class="py-12 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient mb-4">Детальный прайс-лист</h2>
+                <p class="text-xl text-gray-300">Точные цены на все виды работ</p>
+            </div>
+            
+            <div class="price-table rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-center">Диагностика и проверка</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-laptop-code mr-2 text-gradient"></i>Компьютерная диагностика</span>
+                                <span class="text-gradient font-bold">500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-engine mr-2 text-gradient"></i>Диагностика двигателя</span>
+                                <span class="text-gradient font-bold">800 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-shockwave mr-2 text-gradient"></i>Диагностика подвески</span>
+                                <span class="text-gradient font-bold">600 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-cog mr-2 text-gradient"></i>Диагностика АКПП</span>
+                                <span class="text-gradient font-bold">1200 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-snowflake mr-2 text-gradient"></i>Диагностика кондиционера</span>
+                                <span class="text-gradient font-bold">1000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-stop mr-2 text-gradient"></i>Проверка тормозов на стенде</span>
+                                <span class="text-gradient font-bold">500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="flex items-center"><i class="fas fa-car mr-2 text-gradient"></i>Проверка перед покупкой</span>
+                                <span class="text-gradient font-bold">2500 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-center">Техническое обслуживание</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-oil-can mr-2 text-gradient"></i>Замена масла в двигателе</span>
+                                <span class="text-gradient font-bold">750 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-filter mr-2 text-gradient"></i>Замена масляного фильтра</span>
+                                <span class="text-gradient font-bold">200 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-wind mr-2 text-gradient"></i>Замена воздушного фильтра</span>
+                                <span class="text-gradient font-bold">300 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-user mr-2 text-gradient"></i>Замена салонного фильтра</span>
+                                <span class="text-gradient font-bold">400 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-gas-pump mr-2 text-gradient"></i>Замена топливного фильтра</span>
+                                <span class="text-gradient font-bold">500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-bolt mr-2 text-gradient"></i>Замена свечей зажигания</span>
+                                <span class="text-gradient font-bold">400 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="flex items-center"><i class="fas fa-snowflake mr-2 text-gradient"></i>Заправка кондиционера</span>
+                                <span class="text-gradient font-bold">2000 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mt-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-center">Ремонтные работы</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-stop mr-2 text-gradient"></i>Замена тормозных колодок</span>
+                                <span class="text-gradient font-bold">600 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-disc mr-2 text-gradient"></i>Замена тормозных дисков</span>
+                                <span class="text-gradient font-bold">800 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-shockwave mr-2 text-gradient"></i>Замена амортизаторов</span>
+                                <span class="text-gradient font-bold">1000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-link mr-2 text-gradient"></i>Замена рычагов подвески</span>
+                                <span class="text-gradient font-bold">800 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-cog mr-2 text-gradient"></i>Замена сцепления</span>
+                                <span class="text-gradient font-bold">3500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="flex items-center"><i class="fas fa-arrows-alt-h mr-2 text-gradient"></i>Развал-схождение 3D</span>
+                                <span class="text-gradient font-bold">1200 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-center">Сложный ремонт</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-engine mr-2 text-gradient"></i>Капитальный ремонт двигателя</span>
+                                <span class="text-gradient font-bold">от 20000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-cog mr-2 text-gradient"></i>Ремонт АКПП</span>
+                                <span class="text-gradient font-bold">от 15000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-link mr-2 text-gradient"></i>Замена ГРМ</span>
+                                <span class="text-gradient font-bold">3500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-pump mr-2 text-gradient"></i>Замена помпы</span>
+                                <span class="text-gradient font-bold">1200 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                                <span class="flex items-center"><i class="fas fa-thermometer-half mr-2 text-gradient"></i>Замена радиатора</span>
+                                <span class="text-gradient font-bold">1500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="flex items-center"><i class="fas fa-steering-wheel mr-2 text-gradient"></i>Замена рулевой рейки</span>
+                                <span class="text-gradient font-bold">3500 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient mb-4">Часто задаваемые вопросы</h2>
+                <p class="text-xl text-gray-300">Ответы на популярные вопросы</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="service-detail-card rounded-2xl p-6">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="text-xl font-semibold">Сколько длится диагностика автомобиля?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-1"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-300" id="faq-1">
+                        <p>Стандартная диагностика занимает от 30 минут до 2 часов в зависимости от сложности проверяемых систем. Комплексная диагностика всего автомобиля может занять до 4 часов.</p>
+                    </div>
+                </div>
+                
+                <div class="service-detail-card rounded-2xl p-6">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="text-xl font-semibold">Какие марки автомобилей вы обслуживаете?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-2"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-300" id="faq-2">
+                        <p>Мы обслуживаем все марки автомобилей: BMW, Mercedes-Benz, Audi, Volkswagen, Toyota, Honda, Ford, а также отечественные автомобили. У нас есть специалисты по каждой марке.</p>
+                    </div>
+                </div>
+                
+                <div class="service-detail-card rounded-2xl p-6">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="text-xl font-semibold">Даете ли вы гарантию на работы?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-3"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-300" id="faq-3">
+                        <p>Да, мы предоставляем гарантию на все виды работ. Срок гарантии зависит от типа услуги: от 6 месяцев на простые работы до 2 лет на капитальный ремонт двигателя.</p>
+                    </div>
+                </div>
+                
+                <div class="service-detail-card rounded-2xl p-6">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="text-xl font-semibold">Можно ли привезти свои запчасти?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-4"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-300" id="faq-4">
+                        <p>Да, вы можете привезти свои запчасти. Однако мы рекомендуем использовать проверенные поставщики, чтобы избежать проблем с качеством. На работы с вашими запчастями гарантия сохраняется.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gradient mb-6">Готовы записаться на обслуживание?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Оставьте заявку прямо сейчас и получите скидку 10% на первое посещение
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="btn-primary px-8 py-4 rounded-full text-white font-semibold text-lg">
+                    <i class="fas fa-calendar-plus mr-2"></i>
+                    Записаться онлайн
+                </button>
+                <button class="border-2 border-white px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-white hover:text-black transition-all">
+                    <i class="fas fa-phone mr-2"></i>
+                    Позвонить нам
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <i class="fas fa-tools text-3xl text-gradient"></i>
+                <span class="text-3xl font-bold text-gradient">Ключ на 17</span>
+            </div>
+            <p class="text-gray-400 mb-6">© 2024 Ключ на 17. Все права защищены.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-vk text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-telegram text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-xl font-bold text-gradient">Ключ на 17</span>
+            <button onclick="toggleMobileMenu()" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="space-y-4">
+            <a href="index.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Главная</a>
+            <a href="services.html" class="block text-gradient font-semibold py-2" onclick="toggleMobileMenu()">Услуги</a>
+            <a href="gallery.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Галерея</a>
+            <a href="contact.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Контакты</a>
+        </nav>
+        <div class="mt-8">
+            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="toggleMobileMenu()">
+                Записаться
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(id) {
+            const faq = document.getElementById(`faq-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (faq.classList.contains('hidden')) {
+                faq.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                faq.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Add click handlers for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Записаться') || this.textContent.includes('Позвонить')) {
+                        e.preventDefault();
+                        showNotification('.', 'info');
+                    }
+                });
+            });
+        });
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ${
+                type === 'warning' ? 'bg-yellow-600' : 
+                type === 'error' ? 'bg-red-600' : 
+                'bg-blue-600'
+            } text-white`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                        type === 'error' ? 'fa-exclamation-circle' :
+                        'fa-info-circle'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
