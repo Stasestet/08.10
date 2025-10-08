@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея работ - АвтоСервис Pro</title>
@@ -159,7 +159,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryGrid">
                 <!-- Engine Works -->
                 <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(1)">
-                    <img src="https://kimi-web-img.moonshot.cn/img/avtoobninsk.ru/457a8a10247e0d09820add2a2dc1808c6e797b4c.png" alt="Ремонт двигателя BMW" class="w-full h-64 object-cover">
+                    <img src="hero-workshop.png" alt="Ремонт двигателя BMW" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Ремонт двигателя BMW N52</h3>
                         <p class="text-gray-300 mb-4">Замена маслосъемных колпачков и прокладки клапанной крышки</p>
@@ -433,111 +433,37 @@
                 time: '1 день'
             },
             8: {
-                title: 'Развал-схождение Honda Accord',
-                description: '3D регулировка развал-схождения на современном оборудовании. Проверка геометрии подвески.',
-                price: '1 200 ₽',
-                time: '1 час'
-            },
-            9: {
-                title: 'Диагностика тормозной системы',
-                description: 'Проверка тормозных усилий на стенде. Измерение эффективности торможения на каждом колесе.',
-                price: '800 ₽',
-                time: '30 мин'
-            }
-        };
-
-        function openModal(id) {
-            const data = workData[id];
-            modalImage.src = event.target.closest('.gallery-card').querySelector('img').src;
-            modalTitle.textContent = data.title;
-            modalDescription.textContent = data.description;
-            modalPrice.textContent = data.price;
-            modalTime.textContent = data.time;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            anime({
-                targets: modal.querySelector('.modal-content'),
-                scale: [0.8, 1],
-                opacity: [0, 1],
-                duration: 300,
-                easing: 'easeOutQuad'
-            });
-        }
-
-        function closeModal() {
-            anime({
-                targets: modal.querySelector('.modal-content'),
-                scale: [1, 0.8],
-                opacity: [1, 0],
-                duration: 200,
-                easing: 'easeInQuad',
-                complete: () => {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                }
-            });
-        }
-
-        // Close modal on outside click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Animated counters
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                anime({
-                    targets: counter,
-                    innerHTML: [0, target],
-                    duration: 2000,
-                    round: 1,
-                    easing: 'easeOutExpo',
-                    update: function(anim) {
-                        counter.innerHTML = Math.round(anim.animatables[0].target.innerHTML);
-                    }
-                });
-            });
-        }
-
-        // Trigger counter animation when section is visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const statsSection = document.querySelector('[data-count]').closest('section');
-            observer.observe(statsSection);
-
-            // Add click handlers for buttons
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (this.textContent.includes('Записаться')) {
-                        e.preventDefault();
-                        showNotification('.', 'info');
-                    }
-                });
-            });
-        });
-
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ${
-                type === 'warning' ? 'bg-yellow-600' : 
-                type === 'error' ? 'bg-red-600' : 
-                'bg-blue-600'
-            } text-white`;
+                <!-- Локальные изображения из корня -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="1920_a178104-large.jpg" alt="Фото 1" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="IMG_20251005_130438_636.jpg" alt="Фото 2" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="diagnostic-screen.png" alt="Диагностика" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="hero-workshop.png" alt="Мастерская" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="images (3).jfif" alt="Фото 3" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="intelligence-artificielle-futur-reparations-auto.jpeg" alt="ИИ ремонт" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="intelligence-artificielle-futur-reparations-auto.webp" alt="ИИ ремонт webp" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="logo.png" alt="Логотип" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="mechanic-hero.png" alt="Механик" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
+                    <img src="pexels_jakub_pabis.jpg" alt="Фото 4" class="w-full h-64 object-cover">
+                </div>
             
             notification.innerHTML = `
                 <div class="flex items-center">
@@ -563,6 +489,7 @@
                 }, 300);
             }, 3000);
         }
+    </script>
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
         <div class="flex justify-between items-center mb-8">
@@ -585,20 +512,18 @@
     </div>
 
     <script>
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const galleryCards = document.querySelectorAll('.gallery-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
+    <script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Фильтрация галереи
+        var filterButtons = document.querySelectorAll('.filter-btn');
+        var galleryCards = document.querySelectorAll('.gallery-card');
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(function(btn) { btn.classList.remove('active'); });
                 button.classList.add('active');
-
-                const filter = button.getAttribute('data-filter');
-
-                galleryCards.forEach(card => {
+                var filter = button.getAttribute('data-filter');
+                galleryCards.forEach(function(card) {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'block';
                         anime({
@@ -615,7 +540,7 @@
                             scale: [1, 0.8],
                             duration: 300,
                             easing: 'easeInQuad',
-                            complete: () => {
+                            complete: function() {
                                 card.style.display = 'none';
                             }
                         });
@@ -624,15 +549,14 @@
             });
         });
 
-        // Modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalPrice = document.getElementById('modalPrice');
-        const modalTime = document.getElementById('modalTime');
-
-        const workData = {
+        // Модальное окно
+        var modal = document.getElementById('imageModal');
+        var modalImage = document.getElementById('modalImage');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalDescription = document.getElementById('modalDescription');
+        var modalPrice = document.getElementById('modalPrice');
+        var modalTime = document.getElementById('modalTime');
+        var workData = {
             1: {
                 title: 'Ремонт двигателя BMW N52',
                 description: 'Замена маслосъемных колпачков и прокладки клапанной крышки. Работа выполнена с полным соблюдением технологий BMW. Использованы оригинальные запчасти.',
@@ -688,18 +612,15 @@
                 time: '30 мин'
             }
         };
-
-        function openModal(id) {
-            const data = workData[id];
+        window.openModal = function(id) {
+            var data = workData[id];
             modalImage.src = event.target.closest('.gallery-card').querySelector('img').src;
             modalTitle.textContent = data.title;
             modalDescription.textContent = data.description;
             modalPrice.textContent = data.price;
             modalTime.textContent = data.time;
-            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            
             anime({
                 targets: modal.querySelector('.modal-content'),
                 scale: [0.8, 1],
@@ -707,34 +628,30 @@
                 duration: 300,
                 easing: 'easeOutQuad'
             });
-        }
-
-        function closeModal() {
+        };
+        window.closeModal = function() {
             anime({
                 targets: modal.querySelector('.modal-content'),
                 scale: [1, 0.8],
                 opacity: [1, 0],
                 duration: 200,
                 easing: 'easeInQuad',
-                complete: () => {
+                complete: function() {
                     modal.classList.add('hidden');
                     modal.classList.remove('flex');
                 }
             });
-        }
-
-        // Close modal on outside click
-        modal.addEventListener('click', (e) => {
+        };
+        modal.addEventListener('click', function(e) {
             if (e.target === modal) {
-                closeModal();
+                window.closeModal();
             }
         });
-
-        // Animated counters
+        // Анимация счетчиков
         function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
+            var counters = document.querySelectorAll('[data-count]');
+            counters.forEach(function(counter) {
+                var target = parseInt(counter.getAttribute('data-count'));
                 anime({
                     targets: counter,
                     innerHTML: [0, target],
@@ -747,81 +664,61 @@
                 });
             });
         }
-
-        // Trigger counter animation when section is visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // Запуск анимации счетчиков при появлении секции
+        var statsSection = document.querySelector('[data-count]').closest('section');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     animateCounters();
                     observer.unobserve(entry.target);
                 }
             });
         });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const statsSection = document.querySelector('[data-count]').closest('section');
-            observer.observe(statsSection);
-
-            // Add click handlers for buttons
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (this.textContent.includes('Записаться')) {
-                        e.preventDefault();
-                        showNotification('.', 'info');
-                    }
-                });
+        observer.observe(statsSection);
+        // Клик по кнопкам "Записаться"
+        var buttons = document.querySelectorAll('button');
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                if (this.textContent.includes('Записаться')) {
+                    e.preventDefault();
+                    showNotification('.', 'info');
+                }
             });
         });
-
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ${
-                type === 'warning' ? 'bg-yellow-600' : 
-                type === 'error' ? 'bg-red-600' : 
-                'bg-blue-600'
-            } text-white`;
-            
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas ${
-                        type === 'warning' ? 'fa-exclamation-triangle' :
-                        type === 'error' ? 'fa-exclamation-circle' :
-                        'fa-info-circle'
-                    } mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
+        // Мобильное меню
+        window.toggleMobileMenu = function() {
+            var mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
-        }
-
-        // Close mobile menu when clicking outside
+        };
+        // Закрытие мобильного меню при клике вне
         document.addEventListener('click', function(e) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
+            var mobileMenu = document.getElementById('mobileMenu');
+            var menuBtn = document.querySelector('.mobile-menu-btn');
             if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
                 mobileMenu.classList.remove('active');
             }
         });
+        // Уведомления
+        window.showNotification = function(message, type) {
+            if (typeof type === 'undefined') type = 'info';
+            var notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ' +
+                (type === 'warning' ? 'bg-yellow-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600') + ' text-white';
+            notification.innerHTML = '<div class="flex items-center">' +
+                '<i class="fas ' + (type === 'warning' ? 'fa-exclamation-triangle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle') + ' mr-2"></i>' +
+                '<span>' + message + '</span></div>';
+            document.body.appendChild(notification);
+            setTimeout(function() {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            setTimeout(function() {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(function() {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        };
+    });
     </script>
 </body>
 </html>
