@@ -108,7 +108,7 @@
                 <a href="gallery.html" class="text-gradient font-semibold">Галерея</a>
                 <a href="contact.html" class="text-white hover:text-gradient transition-colors">Контакты</a>
             </div>
-            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold">
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold" onclick="openContactModal()">
                 Записаться
             </button>
             <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu()">
@@ -131,22 +131,22 @@
     <section class="py-8 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="filter-btn active px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="all">
+                <button class="filter-btn active px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="all" onclick="filterGallery('all')">
                     Все работы
                 </button>
-                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="engine">
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="engine" onclick="filterGallery('engine')">
                     Двигатель
                 </button>
-                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="suspension">
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="suspension" onclick="filterGallery('suspension')">
                     Подвеска
                 </button>
-                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="brakes">
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="brakes" onclick="filterGallery('brakes')">
                     Тормоза
                 </button>
-                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="transmission">
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="transmission" onclick="filterGallery('transmission')">
                     Трансмиссия
                 </button>
-                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="body">
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="body" onclick="filterGallery('body')">
                     Кузов
                 </button>
             </div>
@@ -161,7 +161,7 @@
                 <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(1)">
                     <img src="hero-workshop.png" alt="Ремонт двигателя BMW" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Ремонт двигателя BMW N52</h3>
+                        <h3 class="text-xl font-bold mb-2">Ремонт двигателя BMW</h3>
                         <p class="text-gray-300 mb-4">Замена маслосъемных колпачков и прокладки клапанной крышки</p>
                         <div class="flex justify-between items-center">
                             <span class="text-gradient font-bold">25 000 ₽</span>
@@ -173,7 +173,7 @@
                 <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(2)">
                     <img src="https://kimi-web-img.moonshot.cn/img/dobrymehanik.by/6445f6b85fac8ba49665e4163ce73cecf2a468e9.webp" alt="Диагностика двигателя" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Диагностика Mercedes M272</h3>
+                        <h3 class="text-xl font-bold mb-2">Диагностика Mercedes</h3>
                         <p class="text-gray-300 mb-4">Компьютерная диагностика и устранение ошибок</p>
                         <div class="flex justify-between items-center">
                             <span class="text-gradient font-bold">1 500 ₽</span>
@@ -274,8 +274,15 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    
+    <!-- Modal for Gallery Items -->
+    <div id="imageModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content bg-gray-800 rounded-2xl overflow-hidden">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-2xl z-10 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img id="modalImage" src="" alt="" class="w-full h-96 object-cover">
+            </div>
             <div class="p-6">
                 <h3 id="modalTitle" class="text-2xl font-bold text-gradient mb-2"></h3>
                 <p id="modalDescription" class="text-gray-300 mb-4"></p>
@@ -283,10 +290,61 @@
                     <span id="modalPrice" class="text-2xl font-bold text-gradient"></span>
                     <span id="modalTime" class="text-sm text-gray-400"></span>
                 </div>
-                <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6">
+                <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6" onclick="openContactModal()">
                     Записаться на аналогичную услугу
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-2xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gradient">Записаться на услугу</h3>
+                <button onclick="closeContactModal()" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="mb-4">
+                    <label class="block text-white text-sm font-bold mb-2" for="name">
+                        Имя
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="name" type="text" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="phone">
+                        Телефон
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="phone" type="tel" placeholder="Введите ваш телефон" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="service">
+                        Услуга
+                    </label>
+                    <select class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                            id="service">
+                        <option value="">Выберите услугу</option>
+                        <option value="engine">Двигатель</option>
+                        <option value="suspension">Подвеска</option>
+                        <option value="brakes">Тормоза</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="body">Кузов</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" type="submit">
+                        Отправить заявку
+                    </button>
+                    <button class="text-gray-400 hover:text-white transition-colors" type="button" onclick="closeContactModal()">
+                        Отмена
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -341,155 +399,6 @@
         </div>
     </footer>
 
-    <script>
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const galleryCards = document.querySelectorAll('.gallery-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-
-                const filter = button.getAttribute('data-filter');
-
-                galleryCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                        anime({
-                            targets: card,
-                            opacity: [0, 1],
-                            scale: [0.8, 1],
-                            duration: 500,
-                            easing: 'easeOutQuad'
-                        });
-                    } else {
-                        anime({
-                            targets: card,
-                            opacity: [1, 0],
-                            scale: [1, 0.8],
-                            duration: 300,
-                            easing: 'easeInQuad',
-                            complete: () => {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            });
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalPrice = document.getElementById('modalPrice');
-        const modalTime = document.getElementById('modalTime');
-
-        const workData = {
-            1: {
-                title: 'Ремонт двигателя BMW N52',
-                description: 'Замена маслосъемных колпачков и прокладки клапанной крышки. Работа выполнена с полным соблюдением технологий BMW. Использованы оригинальные запчасти.',
-                price: '25 000 ₽',
-                time: '2 дня'
-            },
-            2: {
-                title: 'Диагностика Mercedes M272',
-                description: 'Комплексная компьютерная диагностика двигателя. Выявлены и устранены ошибки в системе зажигания. Проведена адаптация компонентов.',
-                price: '1 500 ₽',
-                time: '1 час'
-            },
-            3: {
-                title: 'Ремонт подвески Audi A6',
-                description: 'Полная замена элементов передней подвески. Установлены новые амортизаторы, рычаги и сайлентблоки. Проведена регулировка развал-схождения.',
-                price: '18 000 ₽',
-                time: '1 день'
-            },
-            4: {
-                title: 'Обслуживание тормозов Toyota Camry',
-                description: 'Замена передних и задних тормозных колодок и дисков. Прокачка тормозной системы. Проверка на стенде.',
-                price: '8 500 ₽',
-                time: '3 часа'
-            },
-            5: {
-                title: 'Ремонт АКПП Volkswagen DSG',
-                description: 'Замена масла и фильтра в коробке передач. Проведена адаптация и калибровка. Диагностика работы коробки.',
-                price: '12 000 ₽',
-                time: '5 часов'
-            },
-            6: {
-                title: 'Кузовной ремонт Ford Focus',
-                description: 'Устранение вмятин на двери и крыле. Покраска поврежденных участков. Полировка и защитное покрытие.',
-                price: '15 000 ₽',
-                time: '3 дня'
-            },
-            7: {
-                title: 'ТО Lexus RX350',
-                description: 'Полное техническое обслуживание с заменой всех жидкостей и фильтров. Проверка всех систем автомобиля.',
-                price: '22 000 ₽',
-                time: '1 день'
-            },
-            8: {
-                <!-- Локальные изображения из корня -->
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="/08.10/1920_a178104-large.jpg" alt="Фото 1" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="/08.10/IMG_20251005_130438_636.jpg" alt="Фото 2" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="/08.10/diagnostic-screen.png" alt="Диагностика" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="/08.10/hero-workshop.png" alt="Мастерская" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="images (3).jfif" alt="Фото 3" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="intelligence-artificielle-futur-reparations-auto.jpeg" alt="ИИ ремонт" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="intelligence-artificielle-futur-reparations-auto.webp" alt="ИИ ремонт webp" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="logo.png" alt="Логотип" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="mechanic-hero.png" alt="Механик" class="w-full h-64 object-cover">
-                </div>
-                <div class="gallery-card rounded-2xl overflow-hidden" data-category="local">
-                    <img src="pexels_jakub_pabis.jpg" alt="Фото 4" class="w-full h-64 object-cover">
-                </div>
-            
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas ${
-                        type === 'warning' ? 'fa-exclamation-triangle' :
-                        type === 'error' ? 'fa-exclamation-circle' :
-                        'fa-info-circle'
-                    } mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-    </script>
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
         <div class="flex justify-between items-center mb-8">
@@ -505,66 +414,65 @@
             <a href="contact.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Контакты</a>
         </nav>
         <div class="mt-8">
-            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="toggleMobileMenu()">
+            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal(); toggleMobileMenu();">
                 Записаться
             </button>
         </div>
     </div>
 
     <script>
-    <script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Фильтрация галереи
-        var filterButtons = document.querySelectorAll('.filter-btn');
-        var galleryCards = document.querySelectorAll('.gallery-card');
-        filterButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                filterButtons.forEach(function(btn) { btn.classList.remove('active'); });
-                button.classList.add('active');
-                var filter = button.getAttribute('data-filter');
-                galleryCards.forEach(function(card) {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                        anime({
-                            targets: card,
-                            opacity: [0, 1],
-                            scale: [0.8, 1],
-                            duration: 500,
-                            easing: 'easeOutQuad'
-                        });
-                    } else {
-                        anime({
-                            targets: card,
-                            opacity: [1, 0],
-                            scale: [1, 0.8],
-                            duration: 300,
-                            easing: 'easeInQuad',
-                            complete: function() {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            });
-        });
+        // Filter functionality
+        function filterGallery(filter) {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryCards = document.querySelectorAll('.gallery-card');
 
-        // Модальное окно
-        var modal = document.getElementById('imageModal');
-        var modalImage = document.getElementById('modalImage');
-        var modalTitle = document.getElementById('modalTitle');
-        var modalDescription = document.getElementById('modalDescription');
-        var modalPrice = document.getElementById('modalPrice');
-        var modalTime = document.getElementById('modalTime');
-        var workData = {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            galleryCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    anime({
+                        targets: card,
+                        opacity: [0, 1],
+                        scale: [0.8, 1],
+                        duration: 500,
+                        easing: 'easeOutQuad'
+                    });
+                } else {
+                    anime({
+                        targets: card,
+                        opacity: [1, 0],
+                        scale: [1, 0.8],
+                        duration: 300,
+                        easing: 'easeInQuad',
+                        complete: () => {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalTime = document.getElementById('modalTime');
+
+        const workData = {
             1: {
-                title: 'Ремонт двигателя BMW N52',
+                title: 'Ремонт двигателя BMW',
                 description: 'Замена маслосъемных колпачков и прокладки клапанной крышки. Работа выполнена с полным соблюдением технологий BMW. Использованы оригинальные запчасти.',
                 price: '25 000 ₽',
                 time: '2 дня'
             },
             2: {
-                title: 'Диагностика Mercedes M272',
+                title: 'Диагностика Mercedes',
                 description: 'Комплексная компьютерная диагностика двигателя. Выявлены и устранены ошибки в системе зажигания. Проведена адаптация компонентов.',
                 price: '1 500 ₽',
                 time: '1 час'
@@ -601,124 +509,154 @@
             },
             8: {
                 title: 'Развал-схождение Honda Accord',
-                description: '3D регулировка развал-схождения на современном оборудовании. Проверка геометрии подвески.',
+                description: '3D регулировка развал-схождения на современном оборудовании. Проверка геометрии подвески. Выдача отчета.',
                 price: '1 200 ₽',
                 time: '1 час'
             },
             9: {
                 title: 'Диагностика тормозной системы',
-                description: 'Проверка тормозных усилий на стенде. Измерение эффективности торможения на каждом колесе.',
+                description: 'Проверка тормозной системы на стенде. Измерение усилий на каждом колесе. Проверка работы АБС.',
                 price: '800 ₽',
                 time: '30 мин'
             }
         };
-        window.openModal = function(id) {
-            var data = workData[id];
-            modalImage.src = event.target.closest('.gallery-card').querySelector('img').src;
-            modalTitle.textContent = data.title;
-            modalDescription.textContent = data.description;
-            modalPrice.textContent = data.price;
-            modalTime.textContent = data.time;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            anime({
-                targets: modal.querySelector('.modal-content'),
-                scale: [0.8, 1],
-                opacity: [0, 1],
-                duration: 300,
-                easing: 'easeOutQuad'
-            });
-        };
-        window.closeModal = function() {
-            anime({
-                targets: modal.querySelector('.modal-content'),
-                scale: [1, 0.8],
-                opacity: [1, 0],
-                duration: 200,
-                easing: 'easeInQuad',
-                complete: function() {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                }
-            });
-        };
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                window.closeModal();
+
+        function openModal(id) {
+            const data = workData[id];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                modalPrice.textContent = data.price;
+                modalTime.textContent = data.time;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
             }
-        });
-        // Анимация счетчиков
-        function animateCounters() {
-            var counters = document.querySelectorAll('[data-count]');
-            counters.forEach(function(counter) {
-                var target = parseInt(counter.getAttribute('data-count'));
-                anime({
-                    targets: counter,
-                    innerHTML: [0, target],
-                    duration: 2000,
-                    round: 1,
-                    easing: 'easeOutExpo',
-                    update: function(anim) {
-                        counter.innerHTML = Math.round(anim.animatables[0].target.innerHTML);
-                    }
-                });
-            });
         }
-        // Запуск анимации счетчиков при появлении секции
-        var statsSection = document.querySelector('[data-count]').closest('section');
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        observer.observe(statsSection);
-        // Клик по кнопкам "Записаться"
-        var buttons = document.querySelectorAll('button');
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                if (this.textContent.includes('Записаться')) {
-                    e.preventDefault();
-                    showNotification('.', 'info');
-                }
-            });
-        });
-        // Мобильное меню
-        window.toggleMobileMenu = function() {
-            var mobileMenu = document.getElementById('mobileMenu');
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact Modal functionality
+        const contactModal = document.getElementById('contactModal');
+
+        function openContactModal() {
+            contactModal.classList.remove('hidden');
+            contactModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            contactModal.classList.add('hidden');
+            contactModal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Заявка:', { name, phone, service });
+            
+            // Показываем уведомление об успешной отправке
+            showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            
+            // Очищаем форму и закрываем модальное окно
+            document.getElementById('contactForm').reset();
+            closeContactModal();
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
-        };
-        // Закрытие мобильного меню при клике вне
-        document.addEventListener('click', function(e) {
-            var mobileMenu = document.getElementById('mobileMenu');
-            var menuBtn = document.querySelector('.mobile-menu-btn');
-            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                mobileMenu.classList.remove('active');
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
             }
-        });
-        // Уведомления
-        window.showNotification = function(message, type) {
-            if (typeof type === 'undefined') type = 'info';
-            var notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ' +
-                (type === 'warning' ? 'bg-yellow-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600') + ' text-white';
-            notification.innerHTML = '<div class="flex items-center">' +
-                '<i class="fas ' + (type === 'warning' ? 'fa-exclamation-triangle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle') + ' mr-2"></i>' +
-                '<span>' + message + '</span></div>';
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-semibold transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-600' :
+                type === 'warning' ? 'bg-yellow-600' :
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                        type === 'error' ? 'fa-exclamation-circle' :
+                        type === 'success' ? 'fa-check-circle' : 'fa-info-circle'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
             document.body.appendChild(notification);
-            setTimeout(function() {
+            
+            setTimeout(() => {
                 notification.style.transform = 'translateX(0)';
             }, 100);
-            setTimeout(function() {
+            
+            setTimeout(() => {
                 notification.style.transform = 'translateX(100%)';
-                setTimeout(function() {
+                setTimeout(() => {
                     document.body.removeChild(notification);
                 }, 300);
             }, 3000);
-        };
-    });
+        }
+
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        animateCounter(counter, target);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, observerOptions);
+            
+            counters.forEach(counter => observer.observe(counter));
+        });
+        
+        function animateCounter(element, target) {
+            anime({
+                targets: { count: 0 },
+                count: target,
+                duration: 2000,
+                easing: 'easeOutQuad',
+                update: function(anim) {
+                    element.textContent = Math.floor(anim.animatables[0].target.count);
+                }
+            });
+        }
     </script>
 </body>
 </html>

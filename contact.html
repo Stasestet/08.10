@@ -4,7 +4,7 @@
     <link rel="icon" type="image/x-icon" href="/08.10/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - АвтоСервис Pro</title>
+    <title>Контакты - Ключ на 17</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -125,9 +125,10 @@
                 <a href="index.html" class="text-white hover:text-gradient transition-colors">Главная</a>
                 <a href="services.html" class="text-white hover:text-gradient transition-colors">Услуги</a>
                 <a href="gallery.html" class="text-white hover:text-gradient transition-colors">Галерея</a>
+                <a href="promotions.html" class="text-white hover:text-gradient transition-colors">Акции</a>
                 <a href="contact.html" class="text-gradient font-semibold">Контакты</a>
             </div>
-            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold">
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold" onclick="openContactModal()">
                 Записаться
             </button>
             <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu()">
@@ -304,70 +305,17 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Год выпуска</label>
-                                <input type="number" name="carYear" min="1990" max="2024" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="2020">
+                                <input type="number" name="carYear" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="2020" min="1990" max="2025">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2">Пробег</label>
-                                <input type="number" name="carMileage" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="50000 км">
+                                <label class="block text-sm font-semibold mb-2">VIN номер (необязательно)</label>
+                                <input type="text" name="vin" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="VIN номер">
                             </div>
-                        </div>
-                        <div class="mt-6">
-                            <label class="block text-sm font-semibold mb-2">Описание проблемы</label>
-                            <textarea name="problem" rows="4" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="Опишите проблему или желаемую услугу"></textarea>
                         </div>
                     </div>
 
-                    <!-- Step 3: Date and Time -->
+                    <!-- Step 3: Contact Information -->
                     <div class="form-step" id="step3">
-                        <h3 class="text-2xl font-bold mb-6 text-center">Выберите дату и время</h3>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Предпочитаемая дата</label>
-                                <input type="date" name="date" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Предпочитаемое время</label>
-                                <select name="time" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none">
-                                    <option value="">Выберите время</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="18:00">18:00</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <h4 class="text-lg font-semibold mb-4">Доступное время:</h4>
-                            <div class="grid grid-cols-3 md:grid-cols-5 gap-2">
-                                <div class="bg-green-600 text-white text-center py-2 rounded-lg text-sm">09:00</div>
-                                <div class="bg-green-600 text-white text-center py-2 rounded-lg text-sm">11:00</div>
-                                <div class="bg-red-600 text-white text-center py-2 rounded-lg text-sm">13:00</div>
-                                <div class="bg-green-600 text-white text-center py-2 rounded-lg text-sm">14:00</div>
-                                <div class="bg-green-600 text-white text-center py-2 rounded-lg text-sm">16:00</div>
-                                <div class="bg-red-600 text-white text-center py-2 rounded-lg text-sm">17:00</div>
-                                <div class="bg-green-600 text-white text-center py-2 rounded-lg text-sm">18:00</div>
-                            </div>
-                            <div class="flex items-center mt-4 space-x-4 text-sm">
-                                <div class="flex items-center">
-                                    <div class="w-4 h-4 bg-green-600 rounded mr-2"></div>
-                                    <span>Свободно</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="w-4 h-4 bg-red-600 rounded mr-2"></div>
-                                    <span>Занято</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Contact Information -->
-                    <div class="form-step" id="step4">
                         <h3 class="text-2xl font-bold mb-6 text-center">Контактная информация</h3>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -379,41 +327,46 @@
                                 <input type="tel" name="phone" required class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="+7 (999) 123-45-67">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2">Email</label>
+                                <label class="block text-sm font-semibold mb-2">Email (необязательно)</label>
                                 <input type="email" name="email" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="your@email.com">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2">Удобный способ связи</label>
-                                <select name="contactMethod" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none">
-                                    <option value="phone">Телефон</option>
-                                    <option value="whatsapp">WhatsApp</option>
-                                    <option value="telegram">Telegram</option>
-                                    <option value="email">Email</option>
+                                <label class="block text-sm font-semibold mb-2">Удобное время</label>
+                                <select name="timePreference" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none">
+                                    <option value="morning">Утро (8:00-12:00)</option>
+                                    <option value="afternoon">День (12:00-17:00)</option>
+                                    <option value="evening">Вечер (17:00-20:00)</option>
+                                    <option value="any">Любое время</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="mt-6">
+                    </div>
+
+                    <!-- Step 4: Description -->
+                    <div class="form-step" id="step4">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Опишите проблему</h3>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Описание проблемы или пожелания</label>
+                            <textarea name="description" rows="6" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-orange-500 focus:outline-none" placeholder="Опишите, что случилось с вашим автомобилем или какую услугу вам нужно..."></textarea>
+                        </div>
+                        <div class="mt-4">
                             <label class="flex items-center">
-                                <input type="checkbox" name="agreement" required class="mr-3">
-                                <span class="text-sm">Согласен на обработку персональных данных и получение информационных сообщений</span>
+                                <input type="checkbox" name="agreement" required class="mr-2">
+                                <span class="text-sm">Согласен на обработку персональных данных</span>
                             </label>
                         </div>
                     </div>
 
                     <!-- Navigation Buttons -->
                     <div class="flex justify-between mt-8">
-                        <button type="button" id="prevBtn" class="px-6 py-3 rounded-lg border border-gray-600 text-white font-semibold hover:bg-gray-700 transition-colors" style="display: none;">
-                            <i class="fas fa-arrow-left mr-2"></i>
-                            Назад
+                        <button type="button" id="prevBtn" class="px-6 py-2 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-white transition-colors" onclick="changeStep(-1)" style="display: none;">
+                            <i class="fas fa-arrow-left mr-2"></i>Назад
                         </button>
-                        <div class="flex-1"></div>
-                        <button type="button" id="nextBtn" class="btn-primary px-6 py-3 rounded-lg text-white font-semibold">
-                            Далее
-                            <i class="fas fa-arrow-right ml-2"></i>
+                        <button type="button" id="nextBtn" class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" onclick="changeStep(1)">
+                            Далее<i class="fas fa-arrow-right ml-2"></i>
                         </button>
-                        <button type="submit" id="submitBtn" class="btn-primary px-8 py-3 rounded-lg text-white font-semibold" style="display: none;">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Отправить заявку
+                        <button type="submit" id="submitBtn" class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" style="display: none;">
+                            <i class="fas fa-paper-plane mr-2"></i>Отправить заявку
                         </button>
                     </div>
                 </form>
@@ -421,11 +374,60 @@
         </div>
     </section>
 
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-2xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gradient">Записаться на услугу</h3>
+                <button onclick="closeContactModal()" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="mb-4">
+                    <label class="block text-white text-sm font-bold mb-2" for="name">
+                        Имя
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="name" type="text" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="phone">
+                        Телефон
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="phone" type="tel" placeholder="Введите ваш телефон" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="service">
+                        Услуга
+                    </label>
+                    <select class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                            id="service">
+                        <option value="">Выберите услугу</option>
+                        <option value="diagnostic">Диагностика</option>
+                        <option value="maintenance">Техническое обслуживание</option>
+                        <option value="repair">Ремонт</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" type="submit">
+                        Отправить заявку
+                    </button>
+                    <button class="text-gray-400 hover:text-white transition-colors" type="button" onclick="closeContactModal()">
+                        Отмена
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-black py-12 px-6">
         <div class="max-w-7xl mx-auto text-center">
             <div class="flex items-center justify-center space-x-2 mb-6">
-                <i class="fas fa-tools text-3xl text-gradient"></i>
+                <img src="/08.10/logo.png" alt="Ключ на 17" class="w-12 h-12 rounded-full border border-gray-200 object-cover">
                 <span class="text-3xl font-bold text-gradient">Ключ на 17</span>
             </div>
             <p class="text-gray-400 mb-6">© 2024 Ключ на 17. Все права защищены.</p>
@@ -443,210 +445,6 @@
         </div>
     </footer>
 
-    <script>
-        // Initialize map for Chelyabinsk
-        const map = L.map('map').setView([55.1599, 61.4026], 15);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Add marker for auto service
-        const marker = L.marker([55.1599, 61.4026]).addTo(map);
-        marker.bindPopup('<b>Ключ на 17</b><br>г. Челябинск, ул. Игуменка, 23а').openPopup();
-
-        // Multi-step form functionality
-        let currentStep = 1;
-        const totalSteps = 4;
-
-        const stepTitles = {
-            1: 'Выбор услуги',
-            2: 'Информация об автомобиле',
-            3: 'Дата и время',
-            4: 'Контактная информация'
-        };
-
-        function updateStepDisplay() {
-            // Hide all steps
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            
-            // Show current step
-            document.getElementById(`step${currentStep}`).classList.add('active');
-            
-            // Update progress
-            document.getElementById('currentStep').textContent = currentStep;
-            document.getElementById('stepTitle').textContent = stepTitles[currentStep];
-            document.getElementById('progressFill').style.width = `${(currentStep / totalSteps) * 100}%`;
-            
-            // Update buttons
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
-            nextBtn.style.display = currentStep < totalSteps ? 'block' : 'none';
-            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
-        }
-
-        // Next button handler
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            if (validateCurrentStep()) {
-                currentStep++;
-                updateStepDisplay();
-                
-                // Animate step transition
-                anime({
-                    targets: `#step${currentStep}`,
-                    opacity: [0, 1],
-                    translateX: [50, 0],
-                    duration: 300,
-                    easing: 'easeOutQuad'
-                });
-            }
-        });
-
-        // Previous button handler
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentStep--;
-            updateStepDisplay();
-            
-            // Animate step transition
-            anime({
-                targets: `#step${currentStep}`,
-                opacity: [0, 1],
-                translateX: [-50, 0],
-                duration: 300,
-                easing: 'easeOutQuad'
-            });
-        });
-
-        function validateCurrentStep() {
-            const currentStepElement = document.getElementById(`step${currentStep}`);
-            
-            if (currentStep === 1) {
-                const serviceSelected = currentStepElement.querySelector('input[name="service"]:checked');
-                if (!serviceSelected) {
-                    showNotification('Пожалуйста, выберите тип услуги', 'warning');
-                    return false;
-                }
-            } else if (currentStep === 2) {
-                const carBrand = currentStepElement.querySelector('select[name="carBrand"]').value;
-                const carModel = currentStepElement.querySelector('input[name="carModel"]').value;
-                if (!carBrand || !carModel) {
-                    showNotification('Пожалуйста, укажите марку и модель автомобиля', 'warning');
-                    return false;
-                }
-            } else if (currentStep === 3) {
-                const date = currentStepElement.querySelector('input[name="date"]').value;
-                const time = currentStepElement.querySelector('select[name="time"]').value;
-                if (!date || !time) {
-                    showNotification('Пожалуйста, выберите дату и время', 'warning');
-                    return false;
-                }
-            } else if (currentStep === 4) {
-                const name = currentStepElement.querySelector('input[name="name"]').value;
-                const phone = currentStepElement.querySelector('input[name="phone"]').value;
-                const agreement = currentStepElement.querySelector('input[name="agreement"]').checked;
-                if (!name || !phone || !agreement) {
-                    showNotification('Пожалуйста, заполните обязательные поля и подтвердите согласие', 'warning');
-                    return false;
-                }
-            }
-            
-            return true;
-        }
-
-        // Form submission
-        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            if (validateCurrentStep()) {
-                // Simulate form submission
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Отправка...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
-                    
-                    // Reset form
-                    document.getElementById('appointmentForm').reset();
-                    currentStep = 1;
-                    updateStepDisplay();
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Отправить заявку';
-                    submitBtn.disabled = false;
-                }, 2000);
-            }
-        });
-
-        // Service selection styling
-        document.querySelectorAll('input[name="service"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                // Remove selected styling from all labels
-                document.querySelectorAll('input[name="service"]').forEach(r => {
-                    r.closest('label').querySelector('div').classList.remove('border-orange-500', 'bg-orange-500', 'bg-opacity-10');
-                });
-                
-                // Add selected styling to current label
-                const label = radio.closest('label').querySelector('div');
-                label.classList.add('border-orange-500', 'bg-orange-500', 'bg-opacity-10');
-            });
-        });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.querySelector('input[name="date"]').setAttribute('min', today);
-
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ${
-                type === 'warning' ? 'bg-yellow-600' : 
-                type === 'error' ? 'bg-red-600' : 
-                type === 'success' ? 'bg-green-600' :
-                'bg-blue-600'
-            } text-white`;
-            
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas ${
-                        type === 'warning' ? 'fa-exclamation-triangle' :
-                        type === 'error' ? 'fa-exclamation-circle' :
-                        type === 'success' ? 'fa-check-circle' :
-                        'fa-info-circle'
-                    } mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Add click handlers for other buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (this.textContent.includes('Записаться') && !this.id) {
-                        e.preventDefault();
-                        showNotification('.', 'info');
-                    }
-                });
-            });
-        });
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
         <div class="flex justify-between items-center mb-8">
@@ -659,188 +457,163 @@
             <a href="index.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Главная</a>
             <a href="services.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Услуги</a>
             <a href="gallery.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Галерея</a>
+            <a href="promotions.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Акции</a>
             <a href="contact.html" class="block text-gradient font-semibold py-2" onclick="toggleMobileMenu()">Контакты</a>
         </nav>
         <div class="mt-8">
-            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="toggleMobileMenu()">
+            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal(); toggleMobileMenu();">
                 Записаться
             </button>
         </div>
     </div>
 
     <script>
-        // Initialize map for Chelyabinsk
-        const map = L.map('map').setView([55.1599, 61.4026], 15);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Add marker for auto service
-        const marker = L.marker([55.1599, 61.4026]).addTo(map);
-        marker.bindPopup('<b>Ключ на 17</b><br>г. Челябинск, ул. Игуменка, 23а').openPopup();
-
-        // Multi-step form functionality
         let currentStep = 1;
         const totalSteps = 4;
 
-        const stepTitles = {
-            1: 'Выбор услуги',
-            2: 'Информация об автомобиле',
-            3: 'Дата и время',
-            4: 'Контактная информация'
-        };
-
-        function updateStepDisplay() {
-            // Hide all steps
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
-            });
+        // Initialize map
+        document.addEventListener('DOMContentLoaded', function() {
+            const map = L.map('map').setView([55.1599, 61.4029], 15);
             
-            // Show current step
-            document.getElementById(`step${currentStep}`).classList.add('active');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
             
-            // Update progress
-            document.getElementById('currentStep').textContent = currentStep;
-            document.getElementById('stepTitle').textContent = stepTitles[currentStep];
-            document.getElementById('progressFill').style.width = `${(currentStep / totalSteps) * 100}%`;
-            
-            // Update buttons
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
-            nextBtn.style.display = currentStep < totalSteps ? 'block' : 'none';
-            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
-        }
-
-        // Next button handler
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            if (validateCurrentStep()) {
-                currentStep++;
-                updateStepDisplay();
-                
-                // Animate step transition
-                anime({
-                    targets: `#step${currentStep}`,
-                    opacity: [0, 1],
-                    translateX: [50, 0],
-                    duration: 300,
-                    easing: 'easeOutQuad'
-                });
-            }
+            L.marker([55.1599, 61.4029]).addTo(map)
+                .bindPopup('<b>Ключ на 17</b><br>Автосервис<br>ул. Игуменка, 23а')
+                .openPopup();
         });
 
-        // Previous button handler
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentStep--;
-            updateStepDisplay();
-            
-            // Animate step transition
-            anime({
-                targets: `#step${currentStep}`,
-                opacity: [0, 1],
-                translateX: [-50, 0],
-                duration: 300,
-                easing: 'easeOutQuad'
-            });
-        });
-
-        function validateCurrentStep() {
+        function changeStep(direction) {
             const currentStepElement = document.getElementById(`step${currentStep}`);
             
-            if (currentStep === 1) {
-                const serviceSelected = currentStepElement.querySelector('input[name="service"]:checked');
-                if (!serviceSelected) {
-                    showNotification('Пожалуйста, выберите тип услуги', 'warning');
-                    return false;
+            if (direction === 1) {
+                // Проверка обязательных полей перед переходом
+                if (currentStep === 1) {
+                    const selectedService = document.querySelector('input[name="service"]:checked');
+                    if (!selectedService) {
+                        showNotification('Пожалуйста, выберите тип услуги', 'warning');
+                        return;
+                    }
+                } else if (currentStep === 2) {
+                    const carBrand = document.querySelector('select[name="carBrand"]').value;
+                    if (!carBrand) {
+                        showNotification('Пожалуйста, выберите марку автомобиля', 'warning');
+                        return;
+                    }
+                } else if (currentStep === 3) {
+                    const name = document.querySelector('input[name="name"]').value;
+                    const phone = document.querySelector('input[name="phone"]').value;
+                    if (!name || !phone) {
+                        showNotification('Пожалуйста, заполните имя и телефон', 'warning');
+                        return;
+                    }
                 }
-            } else if (currentStep === 2) {
-                const carBrand = currentStepElement.querySelector('select[name="carBrand"]').value;
-                const carModel = currentStepElement.querySelector('input[name="carModel"]').value;
-                if (!carBrand || !carModel) {
-                    showNotification('Пожалуйста, укажите марку и модель автомобиля', 'warning');
-                    return false;
+                
+                if (currentStep < totalSteps) {
+                    currentStepElement.classList.remove('active');
+                    currentStep++;
+                    document.getElementById(`step${currentStep}`).classList.add('active');
                 }
-            } else if (currentStep === 3) {
-                const date = currentStepElement.querySelector('input[name="date"]').value;
-                const time = currentStepElement.querySelector('select[name="time"]').value;
-                if (!date || !time) {
-                    showNotification('Пожалуйста, выберите дату и время', 'warning');
-                    return false;
-                }
-            } else if (currentStep === 4) {
-                const name = currentStepElement.querySelector('input[name="name"]').value;
-                const phone = currentStepElement.querySelector('input[name="phone"]').value;
-                const agreement = currentStepElement.querySelector('input[name="agreement"]').checked;
-                if (!name || !phone || !agreement) {
-                    showNotification('Пожалуйста, заполните обязательные поля и подтвердите согласие', 'warning');
-                    return false;
-                }
+            } else if (direction === -1 && currentStep > 1) {
+                currentStepElement.classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
             }
             
-            return true;
+            updateStepDisplay();
         }
 
-        // Form submission
-        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
+        function updateStepDisplay() {
+            document.getElementById('currentStep').textContent = currentStep;
+            document.getElementById('progressFill').style.width = `${(currentStep / totalSteps) * 100}%`;
+            
+            const stepTitles = ['Выбор услуги', 'Информация об авто', 'Контактные данные', 'Описание проблемы'];
+            document.getElementById('stepTitle').textContent = stepTitles[currentStep - 1];
+            
+            // Показать/скрыть кнопки навигации
+            document.getElementById('prevBtn').style.display = currentStep > 1 ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = currentStep < totalSteps ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentStep === totalSteps ? 'block' : 'none';
+        }
+
+        // Handle form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            if (validateCurrentStep()) {
-                // Simulate form submission
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Отправка...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
-                    
-                    // Reset form
-                    document.getElementById('appointmentForm').reset();
-                    currentStep = 1;
-                    updateStepDisplay();
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Отправить заявку';
-                    submitBtn.disabled = false;
-                }, 2000);
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Заявка:', data);
+            
+            // Показываем уведомление об успешной отправке
+            showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            
+            // Сброс формы
+            this.reset();
+            currentStep = 1;
+            for (let i = 2; i <= totalSteps; i++) {
+                document.getElementById(`step${i}`).classList.remove('active');
             }
+            document.getElementById('step1').classList.add('active');
+            updateStepDisplay();
         });
 
-        // Service selection styling
-        document.querySelectorAll('input[name="service"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                // Remove selected styling from all labels
-                document.querySelectorAll('input[name="service"]').forEach(r => {
-                    r.closest('label').querySelector('div').classList.remove('border-orange-500', 'bg-orange-500', 'bg-opacity-10');
-                });
-                
-                // Add selected styling to current label
-                const label = radio.closest('label').querySelector('div');
-                label.classList.add('border-orange-500', 'bg-orange-500', 'bg-opacity-10');
-            });
-        });
+        // Contact Modal functionality
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
 
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.querySelector('input[name="date"]').setAttribute('min', today);
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
 
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Заявка:', { name, phone, service });
+            
+            // Показываем уведомление об успешной отправке
+            showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            
+            // Очищаем форму и закрываем модальное окно
+            document.getElementById('contactForm').reset();
+            closeContactModal();
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Notification system
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-6 z-50 p-4 rounded-lg shadow-lg max-w-sm transform translate-x-full transition-transform duration-300 ${
-                type === 'warning' ? 'bg-yellow-600' : 
-                type === 'error' ? 'bg-red-600' : 
+            notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-semibold transform translate-x-full transition-transform duration-300 ${
                 type === 'success' ? 'bg-green-600' :
-                'bg-blue-600'
-            } text-white`;
+                type === 'warning' ? 'bg-yellow-600' :
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
             
             notification.innerHTML = `
                 <div class="flex items-center">
                     <i class="fas ${
                         type === 'warning' ? 'fa-exclamation-triangle' :
                         type === 'error' ? 'fa-exclamation-circle' :
-                        type === 'success' ? 'fa-check-circle' :
-                        'fa-info-circle'
+                        type === 'success' ? 'fa-check-circle' : 'fa-info-circle'
                     } mr-2"></i>
                     <span>${message}</span>
                 </div>
@@ -860,21 +633,13 @@
             }, 3000);
         }
 
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                mobileMenu.classList.remove('active');
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const contactModal = document.getElementById('contactModal');
+            if (event.target === contactModal) {
+                closeContactModal();
             }
-        });
+        }
     </script>
 </body>
 </html>

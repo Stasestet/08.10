@@ -2,30 +2,563 @@
 <html lang="ru">
 <head>
     <link rel="icon" type="image/x-icon" href="/08.10/favicon.ico">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Акции - Ключ на 17</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции - Ключ на 17</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #ffffff;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .promotion-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .promotion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-900">
-  <nav class="navbar fixed top-0 w-full z-50 px-6 py-4">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="/08.10/logo.png" alt="Ключ на 17" class="w-12 h-12 rounded-full border border-gray-200 object-cover">
-        <span class="text-2xl font-bold text-gradient">Ключ на 17</span>
-      </div>
-      <div class="hidden md:flex space-x-8 desktop-nav">
-        <a href="index.html">Главная</a>
-        <a href="services.html">Услуги</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="contact.html">Контакты</a>
-      </div>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="/08.10/logo.png" alt="Ключ на 17" class="w-12 h-12 rounded-full border border-gray-200 object-cover">
+                <span class="text-2xl font-bold text-gradient">Ключ на 17</span>
+            </div>
+            <div class="hidden md:flex space-x-8 desktop-nav">
+                <a href="index.html" class="text-white hover:text-gradient transition-colors">Главная</a>
+                <a href="services.html" class="text-white hover:text-gradient transition-colors">Услуги</a>
+                <a href="gallery.html" class="text-white hover:text-gradient transition-colors">Галерея</a>
+                <a href="promotions.html" class="text-gradient font-semibold">Акции</a>
+                <a href="contact.html" class="text-white hover:text-gradient transition-colors">Контакты</a>
+            </div>
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold" onclick="openContactModal()">
+                Записаться
+            </button>
+            <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gradient mb-6">Акции и специальные предложения</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Успейте воспользоваться выгодными предложениями! Скидки, специальные цены и бонусы для наших клиентов.
+            </p>
+        </div>
+    </section>
+
+    <!-- Active Promotions -->
+    <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient mb-4">Текущие акции</h2>
+                <p class="text-xl text-gray-300">Не упустите возможность сэкономить на обслуживании вашего автомобиля</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Promotion 1 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">-15%</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-oil-can text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Замена масла со скидкой</h3>
+                        <p class="text-gray-300">При замене масла и всех фильтров - скидка 15%</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span>Обычная цена:</span>
+                            <span class="line-through text-gray-400">2 500 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">Цена со скидкой:</span>
+                            <span class="text-2xl font-bold text-gradient">2 125 ₽</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-1" class="text-lg font-bold">7 дней 12:34:56</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Записаться на акцию
+                    </button>
+                </div>
+
+                <!-- Promotion 2 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">-20%</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-search text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Комплексная диагностика</h3>
+                        <p class="text-gray-300">Полная диагностика всех систем автомобиля</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span>Обычная цена:</span>
+                            <span class="line-through text-gray-400">3 500 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">Цена со скидкой:</span>
+                            <span class="text-2xl font-bold text-gradient">2 800 ₽</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-2" class="text-lg font-bold">5 дней 08:15:22</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Записаться на акцию
+                    </button>
+                </div>
+
+                <!-- Promotion 3 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">БОНУС</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-gift text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Бесплатная мойка</h3>
+                        <p class="text-gray-300">При ремонте на сумму от 10 000 ₽</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-center">
+                            <span class="text-gradient font-bold">Подарок:</span>
+                            <span class="text-xl font-bold text-gradient block">Комплексная мойка</span>
+                            <span class="text-gray-400">в подарок</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-3" class="text-lg font-bold">12 дней 15:45:30</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Узнать подробности
+                    </button>
+                </div>
+
+                <!-- Promotion 4 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">-10%</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-users text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Семейная скидка</h3>
+                        <p class="text-gray-300">Приведите друга и получите скидку 10%</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-center">
+                            <span class="text-gradient font-bold">Для вас и друга:</span>
+                            <span class="text-xl font-bold text-gradient block">Скидка 10%</span>
+                            <span class="text-gray-400">на все услуги</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-4" class="text-lg font-bold">30 дней 10:20:15</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Подробности акции
+                    </button>
+                </div>
+
+                <!-- Promotion 5 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">-25%</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-snowflake text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Заправка кондиционера</h3>
+                        <p class="text-gray-300">Подготовьтесь к лету заранее</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span>Обычная цена:</span>
+                            <span class="line-through text-gray-400">2 000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">Цена со скидкой:</span>
+                            <span class="text-2xl font-bold text-gradient">1 500 ₽</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-5" class="text-lg font-bold">20 дней 18:30:45</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Записаться на заправку
+                    </button>
+                </div>
+
+                <!-- Promotion 6 -->
+                <div class="promotion-card rounded-2xl p-8 relative">
+                    <div class="discount-badge">АКЦИЯ</div>
+                    <div class="text-center mb-6">
+                        <i class="fas fa-calendar-check text-4xl text-gradient mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Плановое ТО</h3>
+                        <p class="text-gray-300">При записи онлайн - скидка 15%</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span>Обычная цена:</span>
+                            <span class="line-through text-gray-400">от 3 000 ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">Цена со скидкой:</span>
+                            <span class="text-2xl font-bold text-gradient">от 2 550 ₽</span>
+                        </div>
+                    </div>
+                    <div class="countdown-timer mb-6">
+                        <div class="text-sm mb-2">Акция заканчивается через:</div>
+                        <div id="countdown-6" class="text-lg font-bold">45 дней 22:15:10</div>
+                    </div>
+                    <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal()">
+                        Записаться онлайн
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Program -->
+    <section class="py-12 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gradient mb-6">Программа лояльности</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Станьте постоянным клиентом и получайте дополнительные бонусы
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="promotion-card rounded-2xl p-6">
+                    <i class="fas fa-star text-3xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Бронзовый уровень</h3>
+                    <p class="text-gray-300 mb-4">Скидка 5% на все услуги</p>
+                    <p class="text-sm text-gray-400">При накоплении 10 000 ₽</p>
+                </div>
+                
+                <div class="promotion-card rounded-2xl p-6">
+                    <i class="fas fa-medal text-3xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Серебряный уровень</h3>
+                    <p class="text-gray-300 mb-4">Скидка 10% на все услуги</p>
+                    <p class="text-sm text-gray-400">При накоплении 50 000 ₽</p>
+                </div>
+                
+                <div class="promotion-card rounded-2xl p-6">
+                    <i class="fas fa-crown text-3xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Золотой уровень</h3>
+                    <p class="text-gray-300 mb-4">Скидка 15% на все услуги</p>
+                    <p class="text-sm text-gray-400">При накоплении 100 000 ₽</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.9);">
+        <div class="bg-gray-800 rounded-2xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gradient">Записаться на акцию</h3>
+                <button onclick="closeContactModal()" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="mb-4">
+                    <label class="block text-white text-sm font-bold mb-2" for="name">
+                        Имя
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="name" type="text" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="phone">
+                        Телефон
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="phone" type="tel" placeholder="Введите ваш телефон" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="promotion">
+                        Акция
+                    </label>
+                    <select class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                            id="promotion">
+                        <option value="">Выберите акцию</option>
+                        <option value="oil-change">Замена масла -15%</option>
+                        <option value="diagnostic">Диагностика -20%</option>
+                        <option value="free-wash">Бесплатная мойка</option>
+                        <option value="friend-discount">Семейная скидка -10%</option>
+                        <option value="ac-refill">Заправка кондиционера -25%</option>
+                        <option value="online-to">Плановое ТО онлайн -15%</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" type="submit">
+                        Участвовать в акции
+                    </button>
+                    <button class="text-gray-400 hover:text-white transition-colors" type="button" onclick="closeContactModal()">
+                        Отмена
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-  </nav>
-  <main class="max-w-4xl mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">Акции</h1>
-    <p>Здесь будут отображаться текущие акции и специальные предложения. Вы можете редактировать этот раздел и добавлять объявления.</p>
-  </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <img src="/08.10/logo.png" alt="Ключ на 17" class="w-12 h-12 rounded-full border border-gray-200 object-cover">
+                <span class="text-3xl font-bold text-gradient">Ключ на 17</span>
+            </div>
+            <p class="text-gray-400 mb-6">© 2024 Ключ на 17. Все права защищены.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-vk text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-telegram text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-xl font-bold text-gradient">Ключ на 17</span>
+            <button onclick="toggleMobileMenu()" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="space-y-4">
+            <a href="index.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Главная</a>
+            <a href="services.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Услуги</a>
+            <a href="gallery.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Галерея</a>
+            <a href="promotions.html" class="block text-gradient font-semibold py-2" onclick="toggleMobileMenu()">Акции</a>
+            <a href="contact.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Контакты</a>
+        </nav>
+        <div class="mt-8">
+            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal(); toggleMobileMenu();">
+                Записаться
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timers
+        function updateCountdowns() {
+            const countdowns = [
+                { id: 'countdown-1', days: 7, hours: 12, minutes: 34, seconds: 56 },
+                { id: 'countdown-2', days: 5, hours: 8, minutes: 15, seconds: 22 },
+                { id: 'countdown-3', days: 12, hours: 15, minutes: 45, seconds: 30 },
+                { id: 'countdown-4', days: 30, hours: 10, minutes: 20, seconds: 15 },
+                { id: 'countdown-5', days: 20, hours: 18, minutes: 30, seconds: 45 },
+                { id: 'countdown-6', days: 45, hours: 22, minutes: 15, seconds: 10 }
+            ];
+
+            countdowns.forEach(countdown => {
+                let totalSeconds = countdown.days * 24 * 3600 + countdown.hours * 3600 + countdown.minutes * 60 + countdown.seconds;
+                
+                setInterval(() => {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        
+                        const days = Math.floor(totalSeconds / (24 * 3600));
+                        const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+                        const minutes = Math.floor((totalSeconds % 3600) / 60);
+                        const seconds = totalSeconds % 60;
+                        
+                        document.getElementById(countdown.id).textContent = 
+                            `${days} дн ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }, 1000);
+            });
+        }
+
+        // Contact Modal functionality
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const promotion = document.getElementById('promotion').value;
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Заявка на акцию:', { name, phone, promotion });
+            
+            // Показываем уведомление об успешной отправке
+            showNotification('Заявка на участие в акции отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            
+            // Очищаем форму и закрываем модальное окно
+            document.getElementById('contactForm').reset();
+            closeContactModal();
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-semibold transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-600' :
+                type === 'warning' ? 'bg-yellow-600' :
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                        type === 'error' ? 'fa-exclamation-circle' :
+                        type === 'success' ? 'fa-check-circle' : 'fa-info-circle'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const contactModal = document.getElementById('contactModal');
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
+        }
+
+        // Initialize countdowns when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdowns();
+            
+            // Add animation to promotion cards
+            const cards = document.querySelectorAll('.promotion-card');
+            cards.forEach((card, index) => {
+                anime({
+                    targets: card,
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    delay: index * 200,
+                    duration: 800,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
 </body>
 </html>

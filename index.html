@@ -4,115 +4,659 @@
     <link rel="icon" type="image/x-icon" href="/08.10/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ключ на 17 — Ремонт и обслуживание автомобилей</title>
-    <meta name="description" content="Ключ на 17 — профессиональный ремонт и обслуживание автомобилей всех марок. Современное оборудование и опытные механики.">
-    <meta property="og:title" content="Ключ на 17 — Ремонт и обслуживание автомобилей">
-    <meta property="og:site_name" content="Ключ на 17">
-    <meta name="twitter:title" content="Ключ на 17 — Ремонт и обслуживание автомобилей">
+    <title>Галерея работ - АвтоСервис Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
             color: #ffffff;
-            overflow-x: hidden;
         }
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-workshop.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+        
         .text-gradient {
             background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3); }
-        .service-card { background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%); border: 1px solid #374151; }
-        .calculator-section { background: linear-gradient(135deg, #1a1a1a 0%, #374151 100%); border: 2px solid #ff6b35; }
-        .btn-primary { background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4); }
-        .floating { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating { 0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);} }
-        .pulse-orange { animation: pulse-orange 2s infinite; }
-        @keyframes pulse-orange {0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,0.7);}50%{box-shadow:0 0 0 20px rgba(255,107,53,0);}}
-        .navbar { backdrop-filter: blur(10px); background: rgba(0,0,0,0.8); }
-        .price-display { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight:700; color:#ff6b35; }
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-        .mobile-menu.active { transform: translateX(0); }
-        .mobile-menu-btn { display: none; }
-        @media (max-width:768px){.mobile-menu-btn{display:block;}.desktop-nav{display:none;}}
+        
+        .gallery-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+            color: white;
+        }
+        
+        .modal {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar fixed top-0 w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
                 <img src="/08.10/logo.png" alt="Ключ на 17" class="w-12 h-12 rounded-full border border-gray-200 object-cover">
                 <span class="text-2xl font-bold text-gradient">Ключ на 17</span>
             </div>
             <div class="hidden md:flex space-x-8 desktop-nav">
-                <a href="#home" class="text-white hover:text-gradient transition-colors">Главная</a>
+                <a href="index.html" class="text-white hover:text-gradient transition-colors">Главная</a>
                 <a href="services.html" class="text-white hover:text-gradient transition-colors">Услуги</a>
-                <a href="gallery.html" class="text-white hover:text-gradient transition-colors">Галерея</a>
-                <a href="promotions.html" class="text-white hover:text-gradient transition-colors">Акции</a>
+                <a href="gallery.html" class="text-gradient font-semibold">Галерея</a>
                 <a href="contact.html" class="text-white hover:text-gradient transition-colors">Контакты</a>
             </div>
-            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold open-form">Записаться</button>
-            <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu(); setTimeout(openBanner, 300);">
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-semibold" onclick="openContactModal()">
+                Записаться
+            </button>
+            <button class="mobile-menu-btn text-white text-2xl ml-4" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
-        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
-            <div class="floating mb-8">
-                <i class="fas fa-car text-6xl text-gradient mb-4"></i>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                <span class="text-gradient">Ключ на 17</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-300">
-                Профессиональный ремонт и обслуживание автомобилей всех марок. Современное оборудование, опытные механики, гарантия качества.
+    <section class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gradient mb-6">Галерея работ</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Примеры наших работ. Качественный ремонт и обслуживание автомобилей всех марок.
             </p>
+        </div>
+    </section>
 
-            <!-- Активные кнопки связи -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+79514621285" style="text-decoration:none;">
-                    <button class="flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-lg bg-blue-600 hover:bg-blue-700 transition-colors">
-                        <i class="fas fa-phone"></i>
-                        Позвонить нам
-                    </button>
-                </a>
-                <a href="https://wa.me/79514621285" target="_blank" style="text-decoration:none;">
-                    <button class="flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-lg bg-green-500 hover:bg-green-600 transition-colors">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </button>
-                </a>
-                <a href="https://t.me/NeuroVerseChroniclesBot" target="_blank" style="text-decoration:none;">
-                    <button class="flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-lg bg-blue-400 hover:bg-blue-500 transition-colors">
-                        <i class="fab fa-telegram"></i>
-                        Telegram
-                    </button>
-                </a>
+    <!-- Filter Buttons -->
+    <section class="py-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="all" onclick="filterGallery('all')">
+                    Все работы
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="engine" onclick="filterGallery('engine')">
+                    Двигатель
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="suspension" onclick="filterGallery('suspension')">
+                    Подвеска
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="brakes" onclick="filterGallery('brakes')">
+                    Тормоза
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="transmission" onclick="filterGallery('transmission')">
+                    Трансмиссия
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gray-600 text-white font-semibold" data-filter="body" onclick="filterGallery('body')">
+                    Кузов
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Остальная часть index.html оставлена без изменений, включая Services, Advantages, Footer, Mobile Menu и Banner Form -->
+    <!-- Gallery Grid -->
+    <section class="pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryGrid">
+                <!-- Engine Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(1)">
+                    <img src="hero-workshop.png" alt="Ремонт двигателя BMW" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ремонт двигателя BMW</h3>
+                        <p class="text-gray-300 mb-4">Замена маслосъемных колпачков и прокладки клапанной крышки</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">25 000 ₽</span>
+                            <span class="text-sm text-gray-400">2 дня</span>
+                        </div>
+                    </div>
+                </div>
 
-    <script src="main.js"></script>
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(2)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dobrymehanik.by/6445f6b85fac8ba49665e4163ce73cecf2a468e9.webp" alt="Диагностика двигателя" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Диагностика Mercedes</h3>
+                        <p class="text-gray-300 mb-4">Компьютерная диагностика и устранение ошибок</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">1 500 ₽</span>
+                            <span class="text-sm text-gray-400">1 час</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suspension Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="suspension" onclick="openModal(3)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/novate.ru/d59cd49a99ba2448f12db868932d0f2deefcb82f.jpg" alt="Ремонт подвески" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ремонт подвески Audi A6</h3>
+                        <p class="text-gray-300 mb-4">Замена амортизаторов и рычагов передней подвески</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">18 000 ₽</span>
+                            <span class="text-sm text-gray-400">1 день</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brake Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="brakes" onclick="openModal(4)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/sun6-21.userapi.com/52f670e9376c32ee3057701b7a69171b79a696ae.jpg" alt="Ремонт тормозов" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Обслуживание тормозов Toyota Camry</h3>
+                        <p class="text-gray-300 mb-4">Замена колодок и дисков, прокачка системы</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">8 500 ₽</span>
+                            <span class="text-sm text-gray-400">3 часа</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transmission Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="transmission" onclick="openModal(5)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dtdieselservis.com.ua/5730734c4455482d7ef8d88705ade0650b0211ff.jpg" alt="Диагностика трансмиссии" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ремонт АКПП Volkswagen DSG</h3>
+                        <p class="text-gray-300 mb-4">Замена масла и фильтра, адаптация</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">12 000 ₽</span>
+                            <span class="text-sm text-gray-400">5 часов</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="body" onclick="openModal(6)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.prom.ua/bd0e2dd62dd40f779eac4883c5580511c5b2eaea.jpg" alt="Кузовной ремонт" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Кузовной ремонт Ford Focus</h3>
+                        <p class="text-gray-300 mb-4">Устранение вмятин, покраска деталей</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">15 000 ₽</span>
+                            <span class="text-sm text-gray-400">3 дня</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Works -->
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="engine" onclick="openModal(7)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.kingtony.com/c4d61bc9845a1b3a943bcc3903e4d8a43867195a.jpg" alt="Техническое обслуживание" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">ТО Lexus RX350</h3>
+                        <p class="text-gray-300 mb-4">Полное техническое обслуживание, замена всех жидкостей</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">22 000 ₽</span>
+                            <span class="text-sm text-gray-400">1 день</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="suspension" onclick="openModal(8)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/avtovesti.com/76e6d7f0d0c5cc72be8118dfd1a5a6dbe31dd744.jpg" alt="Развал-схождение" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Развал-схождение Honda Accord</h3>
+                        <p class="text-gray-300 mb-4">3D регулировка развал-схождения, проверка геометрии</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">1 200 ₽</span>
+                            <span class="text-sm text-gray-400">1 час</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card rounded-2xl overflow-hidden" data-category="brakes" onclick="openModal(9)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/podborkaauto.ru/c1f19c4a240f7f2fdefb333452bb6d9c54107cad.jpg" alt="Диагностика тормозов" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Диагностика тормозной системы</h3>
+                        <p class="text-gray-300 mb-4">Проверка на стенде, измерение усилий</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gradient font-bold">800 ₽</span>
+                            <span class="text-sm text-gray-400">30 мин</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery Items -->
+    <div id="imageModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content bg-gray-800 rounded-2xl overflow-hidden">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-2xl z-10 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img id="modalImage" src="" alt="" class="w-full h-96 object-cover">
+            </div>
+            <div class="p-6">
+                <h3 id="modalTitle" class="text-2xl font-bold text-gradient mb-2"></h3>
+                <p id="modalDescription" class="text-gray-300 mb-4"></p>
+                <div class="flex justify-between items-center">
+                    <span id="modalPrice" class="text-2xl font-bold text-gradient"></span>
+                    <span id="modalTime" class="text-sm text-gray-400"></span>
+                </div>
+                <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold mt-6" onclick="openContactModal()">
+                    Записаться на аналогичную услугу
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-2xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gradient">Записаться на услугу</h3>
+                <button onclick="closeContactModal()" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="mb-4">
+                    <label class="block text-white text-sm font-bold mb-2" for="name">
+                        Имя
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="name" type="text" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="phone">
+                        Телефон
+                    </label>
+                    <input class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                           id="phone" type="tel" placeholder="Введите ваш телефон" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-bold mb-2" for="service">
+                        Услуга
+                    </label>
+                    <select class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-gradient" 
+                            id="service">
+                        <option value="">Выберите услугу</option>
+                        <option value="engine">Двигатель</option>
+                        <option value="suspension">Подвеска</option>
+                        <option value="brakes">Тормоза</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="body">Кузов</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold" type="submit">
+                        Отправить заявку
+                    </button>
+                    <button class="text-gray-400 hover:text-white transition-colors" type="button" onclick="closeContactModal()">
+                        Отмена
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <section class="py-12 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient mb-4">Наша статистика</h2>
+                <p class="text-xl text-gray-300">Результаты нашей работы в цифрах</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2" data-count="1500">0</div>
+                    <p class="text-gray-400">Отремонтированных автомобилей</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2" data-count="98">0</div>
+                    <p class="text-gray-400">% довольных клиентов</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2" data-count="15">0</div>
+                    <p class="text-gray-400">Лет опыта</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2" data-count="24">0</div>
+                    <p class="text-gray-400">Месяца гарантии</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <i class="fas fa-tools text-3xl text-gradient"></i>
+                <span class="text-3xl font-bold text-gradient">Ключ на 17</span>
+            </div>
+            <p class="text-gray-400 mb-6">© 2024 Ключ на 17. Все права защищены.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-vk text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-telegram text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gradient transition-colors">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 transform translate-x-full transition-transform duration-300" id="mobileMenu">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-xl font-bold text-gradient">Ключ на 17</span>
+            <button onclick="toggleMobileMenu()" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="space-y-4">
+            <a href="index.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Главная</a>
+            <a href="services.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Услуги</a>
+            <a href="gallery.html" class="block text-gradient font-semibold py-2" onclick="toggleMobileMenu()">Галерея</a>
+            <a href="contact.html" class="block text-white hover:text-gradient transition-colors py-2" onclick="toggleMobileMenu()">Контакты</a>
+        </nav>
+        <div class="mt-8">
+            <button class="w-full btn-primary py-3 rounded-lg text-white font-semibold" onclick="openContactModal(); toggleMobileMenu();">
+                Записаться
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        function filterGallery(filter) {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryCards = document.querySelectorAll('.gallery-card');
+
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            galleryCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    anime({
+                        targets: card,
+                        opacity: [0, 1],
+                        scale: [0.8, 1],
+                        duration: 500,
+                        easing: 'easeOutQuad'
+                    });
+                } else {
+                    anime({
+                        targets: card,
+                        opacity: [1, 0],
+                        scale: [1, 0.8],
+                        duration: 300,
+                        easing: 'easeInQuad',
+                        complete: () => {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalTime = document.getElementById('modalTime');
+
+        const workData = {
+            1: {
+                title: 'Ремонт двигателя BMW',
+                description: 'Замена маслосъемных колпачков и прокладки клапанной крышки. Работа выполнена с полным соблюдением технологий BMW. Использованы оригинальные запчасти.',
+                price: '25 000 ₽',
+                time: '2 дня'
+            },
+            2: {
+                title: 'Диагностика Mercedes',
+                description: 'Комплексная компьютерная диагностика двигателя. Выявлены и устранены ошибки в системе зажигания. Проведена адаптация компонентов.',
+                price: '1 500 ₽',
+                time: '1 час'
+            },
+            3: {
+                title: 'Ремонт подвески Audi A6',
+                description: 'Полная замена элементов передней подвески. Установлены новые амортизаторы, рычаги и сайлентблоки. Проведена регулировка развал-схождения.',
+                price: '18 000 ₽',
+                time: '1 день'
+            },
+            4: {
+                title: 'Обслуживание тормозов Toyota Camry',
+                description: 'Замена передних и задних тормозных колодок и дисков. Прокачка тормозной системы. Проверка на стенде.',
+                price: '8 500 ₽',
+                time: '3 часа'
+            },
+            5: {
+                title: 'Ремонт АКПП Volkswagen DSG',
+                description: 'Замена масла и фильтра в коробке передач. Проведена адаптация и калибровка. Диагностика работы коробки.',
+                price: '12 000 ₽',
+                time: '5 часов'
+            },
+            6: {
+                title: 'Кузовной ремонт Ford Focus',
+                description: 'Устранение вмятин на двери и крыле. Покраска поврежденных участков. Полировка и защитное покрытие.',
+                price: '15 000 ₽',
+                time: '3 дня'
+            },
+            7: {
+                title: 'ТО Lexus RX350',
+                description: 'Полное техническое обслуживание с заменой всех жидкостей и фильтров. Проверка всех систем автомобиля.',
+                price: '22 000 ₽',
+                time: '1 день'
+            },
+            8: {
+                title: 'Развал-схождение Honda Accord',
+                description: '3D регулировка развал-схождения на современном оборудовании. Проверка геометрии подвески. Выдача отчета.',
+                price: '1 200 ₽',
+                time: '1 час'
+            },
+            9: {
+                title: 'Диагностика тормозной системы',
+                description: 'Проверка тормозной системы на стенде. Измерение усилий на каждом колесе. Проверка работы АБС.',
+                price: '800 ₽',
+                time: '30 мин'
+            }
+        };
+
+        function openModal(id) {
+            const data = workData[id];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                modalPrice.textContent = data.price;
+                modalTime.textContent = data.time;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact Modal functionality
+        const contactModal = document.getElementById('contactModal');
+
+        function openContactModal() {
+            contactModal.classList.remove('hidden');
+            contactModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            contactModal.classList.add('hidden');
+            contactModal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Заявка:', { name, phone, service });
+            
+            // Показываем уведомление об успешной отправке
+            showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            
+            // Очищаем форму и закрываем модальное окно
+            document.getElementById('contactForm').reset();
+            closeContactModal();
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-semibold transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-600' :
+                type === 'warning' ? 'bg-yellow-600' :
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                        type === 'error' ? 'fa-exclamation-circle' :
+                        type === 'success' ? 'fa-check-circle' : 'fa-info-circle'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        animateCounter(counter, target);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, observerOptions);
+            
+            counters.forEach(counter => observer.observe(counter));
+        });
+        
+        function animateCounter(element, target) {
+            anime({
+                targets: { count: 0 },
+                count: target,
+                duration: 2000,
+                easing: 'easeOutQuad',
+                update: function(anim) {
+                    element.textContent = Math.floor(anim.animatables[0].target.count);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
